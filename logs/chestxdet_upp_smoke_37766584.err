@@ -1,0 +1,36 @@
+
+=====================================================================
+This module is only for creating or activating Python environments:
+$ mamba create -n myenv -c conda-forge python=3 <package_name>
+$ source activate myenv
+
+Only run "pip install" after activating an environment.
+Running pip without activating an environment is known to cause issues.
+
+To list available environments:
+$ mamba info --envs
+
+Other uses are not tested. More info: https://links.asu.edu/solpy
+=====================================================================
+
+  
+ERROR: Could not find a version that satisfies the requirement pytorch==0.4.1 (from versions: 0.1.2, 1.0.2)
+ERROR: No matching distribution found for pytorch==0.4.1
+/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py:264: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  assert LooseVersion(torch.__version__) >= LooseVersion('0.4.0'), \
+Traceback (most recent call last):
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 328, in <module>
+    main(cfg, gpus)
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 258, in main
+    validate(segmentation_module, cfg, epoch+1)
+  File "/home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 102, in validate
+    dataset_val = ValDataset(
+                  ^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/mit_semseg/dataset.py", line 208, in __init__
+    super(ValDataset, self).__init__(odgt, opt, **kwargs)
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/mit_semseg/dataset.py", line 31, in __init__
+    self.parse_input_list(odgt, **kwargs)
+TypeError: BaseDataset.parse_input_list() got an unexpected keyword argument 'batch_per_gpu'

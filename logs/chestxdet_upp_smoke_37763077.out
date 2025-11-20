@@ -1,0 +1,6 @@
+Requirement already satisfied: yacs in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (0.1.8)
+Requirement already satisfied: tqdm in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (4.67.1)
+Collecting opencv-python
+  Using cached opencv_python-4.12.0.88-cp37-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (19 kB)
+Requirement already satisfied: numpy in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (from -r requirements.txt (line 1)) (2.3.3)
+Requirement already satisfied: scipy in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (from -r requirements.txt (line 2)) (1.16.3)

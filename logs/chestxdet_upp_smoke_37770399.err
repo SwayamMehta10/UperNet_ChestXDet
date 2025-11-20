@@ -1,0 +1,38 @@
+
+=====================================================================
+This module is only for creating or activating Python environments:
+$ mamba create -n myenv -c conda-forge python=3 <package_name>
+$ source activate myenv
+
+Only run "pip install" after activating an environment.
+Running pip without activating an environment is known to cause issues.
+
+To list available environments:
+$ mamba info --envs
+
+Other uses are not tested. More info: https://links.asu.edu/solpy
+=====================================================================
+
+  
+ERROR: Could not find a version that satisfies the requirement pytorch==0.4.1 (from versions: 0.1.2, 1.0.2)
+ERROR: No matching distribution found for pytorch==0.4.1
+/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py:266: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  assert LooseVersion(torch.__version__) >= LooseVersion('0.4.0'), \
+Traceback (most recent call last):
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 330, in <module>
+    main(cfg, gpus)
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 260, in main
+    validate(segmentation_module, cfg, epoch+1)
+  File "/home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 124, in validate
+    pred = segmentation_module(sample, segSize=segSize, is_eval=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SegmentationModule.forward() got an unexpected keyword argument 'is_eval'

@@ -1,0 +1,105 @@
+Requirement already satisfied: yacs in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (0.1.8)
+Requirement already satisfied: tqdm in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (4.67.1)
+Requirement already satisfied: opencv-python in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (4.12.0.88)
+Requirement already satisfied: numpy in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (from -r requirements.txt (line 1)) (2.2.6)
+Requirement already satisfied: scipy in /home/smehta90/.conda/envs/upernet_env/lib/python3.12/site-packages (from -r requirements.txt (line 2)) (1.16.3)
+[2025-11-06 00:44:54,463 INFO train.py line 325 2674639] Loaded configuration file config/chestxdet-resnet50-upernet.yaml
+[2025-11-06 00:44:54,479 INFO train.py line 326 2674639] Running with config:
+DATASET:
+  imgMaxSize: 1536
+  imgSizes: (512, 768, 1024)
+  list_train: data/chestxdet/lists/train.odgt
+  list_val: data/chestxdet/lists/val.odgt
+  num_class: 14
+  padding_constant: 32
+  random_flip: True
+  root_dataset: .
+  segm_downsampling_rate: 8
+DIR: ckpt/chestxdet-resnet50-upernet
+MODEL:
+  arch_decoder: upernet
+  arch_encoder: resnet50
+  fc_dim: 2048
+  weights_decoder: 
+  weights_encoder: pretrained/resnet50-imagenet.pth
+TEST:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  result: ./
+TRAIN:
+  batch_size_per_gpu: 1
+  beta1: 0.9
+  deep_sup_scale: 0.4
+  disp_iter: 50
+  epoch_iters: 2420
+  fix_bn: True
+  lr_decoder: 0.001
+  lr_encoder: 0.0001
+  lr_pow: 0.9
+  num_epoch: 40
+  optim: SGD
+  seed: 1337
+  start_epoch: 0
+  weight_decay: 0.0001
+  workers: 4
+VAL:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  visualize: False
+[2025-11-06 00:44:54,494 INFO train.py line 331 2674639] Outputing checkpoints to: ckpt/chestxdet-resnet50-upernet
+Loading weights for net_encoder
+# samples: 2420
+1 Epoch = 2420 iters
+Epoch: [1][0/2420], Time: 2.77, Data: 0.00, lr_encoder: 0.000100, lr_decoder: 0.001000, Accuracy: 0.01, Loss: 7.656336
+Epoch: [1][50/2420], Time: 0.12, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.001000, Accuracy: 85.42, Loss: 1.958774
+Epoch: [1][100/2420], Time: 0.09, Data: 0.04, lr_encoder: 0.000100, lr_decoder: 0.000999, Accuracy: 89.18, Loss: 1.151817
+Epoch: [1][150/2420], Time: 0.08, Data: 0.04, lr_encoder: 0.000100, lr_decoder: 0.000999, Accuracy: 90.41, Loss: 0.880254
+Epoch: [1][200/2420], Time: 0.08, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000998, Accuracy: 90.47, Loss: 0.769640
+Epoch: [1][250/2420], Time: 0.08, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000998, Accuracy: 90.90, Loss: 0.684482
+Epoch: [1][300/2420], Time: 0.08, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000997, Accuracy: 91.26, Loss: 0.625350
+Epoch: [1][350/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000997, Accuracy: 91.47, Loss: 0.587110
+Epoch: [1][400/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000996, Accuracy: 91.79, Loss: 0.550229
+Epoch: [1][450/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000996, Accuracy: 91.67, Loss: 0.530513
+Epoch: [1][500/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000100, lr_decoder: 0.000995, Accuracy: 91.61, Loss: 0.520685
+Epoch: [1][550/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000995, Accuracy: 91.59, Loss: 0.506443
+Epoch: [1][600/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000994, Accuracy: 91.74, Loss: 0.490875
+Epoch: [1][650/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000994, Accuracy: 91.79, Loss: 0.478217
+Epoch: [1][700/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000993, Accuracy: 91.94, Loss: 0.461116
+Epoch: [1][750/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000993, Accuracy: 91.87, Loss: 0.456446
+Epoch: [1][800/2420], Time: 0.07, Data: 0.05, lr_encoder: 0.000099, lr_decoder: 0.000993, Accuracy: 91.85, Loss: 0.450292
+Epoch: [1][850/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000992, Accuracy: 91.92, Loss: 0.441963
+Epoch: [1][900/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000992, Accuracy: 91.88, Loss: 0.438684
+Epoch: [1][950/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000991, Accuracy: 91.94, Loss: 0.432842
+Epoch: [1][1000/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000991, Accuracy: 91.95, Loss: 0.427198
+Epoch: [1][1050/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000990, Accuracy: 91.87, Loss: 0.425837
+Epoch: [1][1100/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000990, Accuracy: 91.96, Loss: 0.419416
+Epoch: [1][1150/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000989, Accuracy: 92.09, Loss: 0.410430
+Epoch: [1][1200/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000989, Accuracy: 92.07, Loss: 0.407672
+Epoch: [1][1250/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000988, Accuracy: 92.08, Loss: 0.404209
+Epoch: [1][1300/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000988, Accuracy: 92.00, Loss: 0.403195
+Epoch: [1][1350/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000987, Accuracy: 92.02, Loss: 0.399601
+Epoch: [1][1400/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000987, Accuracy: 91.99, Loss: 0.397735
+Epoch: [1][1450/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000987, Accuracy: 91.99, Loss: 0.394258
+Epoch: [1][1500/2420], Time: 0.07, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000986, Accuracy: 91.98, Loss: 0.392611
+Epoch: [1][1550/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000986, Accuracy: 91.97, Loss: 0.390339
+Epoch: [1][1600/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000099, lr_decoder: 0.000985, Accuracy: 91.98, Loss: 0.386569
+Epoch: [1][1650/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000985, Accuracy: 92.00, Loss: 0.383936
+Epoch: [1][1700/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000984, Accuracy: 92.06, Loss: 0.379499
+Epoch: [1][1750/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000984, Accuracy: 92.10, Loss: 0.376658
+Epoch: [1][1800/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000983, Accuracy: 92.10, Loss: 0.374663
+Epoch: [1][1850/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000983, Accuracy: 92.01, Loss: 0.375614
+Epoch: [1][1900/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000982, Accuracy: 92.04, Loss: 0.373011
+Epoch: [1][1950/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000982, Accuracy: 92.04, Loss: 0.370940
+Epoch: [1][2000/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000981, Accuracy: 92.11, Loss: 0.366628
+Epoch: [1][2050/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000981, Accuracy: 92.14, Loss: 0.363742
+Epoch: [1][2100/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000980, Accuracy: 92.19, Loss: 0.360107
+Epoch: [1][2150/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000980, Accuracy: 92.19, Loss: 0.358725
+Epoch: [1][2200/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000980, Accuracy: 92.19, Loss: 0.357255
+Epoch: [1][2250/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000979, Accuracy: 92.18, Loss: 0.356351
+Epoch: [1][2300/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000979, Accuracy: 92.27, Loss: 0.352817
+Epoch: [1][2350/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000978, Accuracy: 92.29, Loss: 0.350956
+Epoch: [1][2400/2420], Time: 0.06, Data: 0.04, lr_encoder: 0.000098, lr_decoder: 0.000978, Accuracy: 92.31, Loss: 0.348929
+Saving checkpoints...
+
+Running validation after epoch 1 ...
+# samples: 605

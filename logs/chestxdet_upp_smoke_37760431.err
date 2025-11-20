@@ -1,0 +1,22 @@
+
+=====================================================================
+This module is only for creating or activating Python environments:
+$ mamba create -n myenv -c conda-forge python=3 <package_name>
+$ source activate myenv
+
+Only run "pip install" after activating an environment.
+Running pip without activating an environment is known to cause issues.
+
+To list available environments:
+$ mamba info --envs
+
+Other uses are not tested. More info: https://links.asu.edu/solpy
+=====================================================================
+
+  
+ERROR: Could not find a version that satisfies the requirement pytorch==0.4.1 (from versions: 0.1.2, 1.0.2)
+ERROR: No matching distribution found for pytorch==0.4.1
+Traceback (most recent call last):
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 16, in <module>
+    from mit_semseg.utils import AverageMeter, parse_devices, setup_logger
+ImportError: cannot import name 'AverageMeter' from 'mit_semseg.utils' (/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/mit_semseg/utils/__init__.py)

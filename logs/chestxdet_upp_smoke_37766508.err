@@ -1,0 +1,33 @@
+
+=====================================================================
+This module is only for creating or activating Python environments:
+$ mamba create -n myenv -c conda-forge python=3 <package_name>
+$ source activate myenv
+
+Only run "pip install" after activating an environment.
+Running pip without activating an environment is known to cause issues.
+
+To list available environments:
+$ mamba info --envs
+
+Other uses are not tested. More info: https://links.asu.edu/solpy
+=====================================================================
+
+  
+ERROR: Could not find a version that satisfies the requirement pytorch==0.4.1 (from versions: 0.1.2, 1.0.2)
+ERROR: No matching distribution found for pytorch==0.4.1
+Traceback (most recent call last):
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/train.py", line 15, in <module>
+    from mit_semseg.models import ModelBuilder, SegmentationModule
+  File "/etc/python/sitecustomize.py", line 117, in _import
+    mod = _original_import(name, globals, locals, fromlist, level)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/mit_semseg/models/__init__.py", line 1, in <module>
+    from .models import ModelBuilder, SegmentationModule
+  File "/etc/python/sitecustomize.py", line 117, in _import
+    mod = _original_import(name, globals, locals, fromlist, level)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/mit_semseg/models/models.py", line 46
+    loss_deepsup = self.crit(pred_deepsup, seg_label])
+                                                    ^
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '('
