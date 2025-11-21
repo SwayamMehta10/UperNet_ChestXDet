@@ -1,0 +1,42 @@
+DIR: "ckpt/chestxdet-resnet50-upernet"
+
+DATASET:
+  root_dataset: "."        # we pass absolute paths in odgt records
+  list_train: "data/chestxdet/lists/train.odgt"
+  list_val:   "data/chestxdet/lists/val.odgt"
+  imgSizes: [512, 768, 1024]   # maintain aspect; X-rays are large
+  imgMaxSize: 1536
+  padding_constant: 32
+  segm_downsampling_rate: 8
+  random_flip: True
+  num_class: 14            # 0 background + 13 diseases
+
+MODEL:
+  arch_encoder: "resnet50"
+  arch_decoder: "upernet"
+  fc_dim: 2048
+  weights_encoder: "pretrained/resnet50-imagenet.pth"
+  weights_decoder: ""
+
+TRAIN:
+  batch_size_per_gpu: 1
+  num_epoch: 40
+  start_epoch: 0
+  epoch_iters: 2420
+  lr_encoder: 0.0001
+  lr_decoder: 0.001
+  lr_pow: 0.9
+  beta1: 0.9
+  weight_decay: 1.0e-4
+  deep_sup_scale: 0.4
+  fix_bn: True
+  workers: 4
+  disp_iter: 50
+  seed: 1337
+
+VAL:
+  batch_size: 1
+  visualize: False
+
+TEST:
+  batch_size: 1
