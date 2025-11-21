@@ -1,0 +1,42 @@
+DIR: "ckpt/chestxdet-resnet50-upernet-binary"
+
+DATASET:
+  root_dataset: "."        # we pass absolute paths in odgt records
+  list_train: "data/chestxdet_binary/lists/train.odgt"
+  list_val:   "data/chestxdet_binary/lists/val.odgt"
+  imgSizes: [512, 768, 1024]   # multi-scale training
+  imgMaxSize: 1536
+  padding_constant: 32
+  segm_downsampling_rate: 4    # CHANGED: 8 -> 4 for better detail
+  random_flip: True
+  num_class: 2                 # CHANGED: 14 -> 2 (background + disease)
+
+MODEL:
+  arch_encoder: "resnet50"
+  arch_decoder: "upernet"
+  fc_dim: 2048
+  weights_encoder: "pretrained/resnet50-imagenet.pth"
+  weights_decoder: ""
+
+TRAIN:
+  batch_size_per_gpu: 2        # CHANGED: 1 -> 2 (A100 can handle it)
+  num_epoch: 30                # CHANGED: 40 -> 30 (fit in time window)
+  start_epoch: 0
+  epoch_iters: 1210            # CHANGED: 2420 -> 1210 (2x batch size)
+  lr_encoder: 0.00005          # CHANGED: 0.0001 -> 0.00005 (more stable)
+  lr_decoder: 0.0005           # CHANGED: 0.001 -> 0.0005 (more stable)
+  lr_pow: 0.9
+  beta1: 0.9
+  weight_decay: 1.0e-4
+  deep_sup_scale: 0.4
+  fix_bn: False                # CHANGED: True -> False (critical!)
+  workers: 16                  # CHANGED: 4 -> 16 (use more CPUs)
+  disp_iter: 50
+  seed: 1337
+
+VAL:
+  batch_size: 1
+  visualize: False
+
+TEST:
+  batch_size: 1

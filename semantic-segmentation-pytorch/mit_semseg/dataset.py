@@ -31,9 +31,11 @@ class BaseDataset(torch.utils.data.Dataset):
         self.parse_input_list(odgt, **kwargs)
 
         # mean and std
+        # NOTE: Using X-ray appropriate normalization instead of ImageNet
+        # X-rays are grayscale converted to RGB, so use same value for all channels
         self.normalize = transforms.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225])
+            mean=[0.5, 0.5, 0.5],      # Mid-gray for X-rays
+            std=[0.25, 0.25, 0.25])    # Reasonable spread for medical images
 
     def parse_input_list(self, odgt, max_sample=-1, start_idx=-1, end_idx=-1):
         if isinstance(odgt, list):
