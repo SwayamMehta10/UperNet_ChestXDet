@@ -33,11 +33,12 @@ def calculate_dice(pred, gt):
 
 def create_simple_visualization(img_path, gt_path, pred_mask, output_path, dice_score, img_id):
     """
-    Create simple 1x3 visualization:
-    [Original | Ground Truth | Prediction]
+    Create 1x2 visualization:
+    [X-ray with GT overlay (green) | X-ray with Prediction overlay (blue)]
     """
     # Load original image
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)  # Convert to BGR for colored overlays
     h, w = img.shape
     
     # Load ground truth
@@ -47,35 +48,63 @@ def create_simple_visualization(img_path, gt_path, pred_mask, output_path, dice_
     if pred_mask.shape != gt.shape:
         pred_mask = cv2.resize(pred_mask, (gt.shape[1], gt.shape[0]), interpolation=cv2.INTER_NEAREST)
     
-    # Convert masks to binary 0/255 for visualization
-    gt_vis = ((gt > 0) * 255).astype(np.uint8)
-    pred_vis = ((pred_mask > 0) * 255).astype(np.uint8)
+    # Create binary masks
+    gt_bin = (gt > 0).astype(np.uint8)
+    pred_bin = (pred_mask > 0).astype(np.uint8)
+    
+    # Create left image: X-ray with GREEN ground truth overlay
+    left_img = img_rgb.copy()
+    left_img[gt_bin == 1] = [0, 255, 0]  # BGR: Green
+    left_img = cv2.addWeighted(img_rgb, 0.6, left_img, 0.4, 0)
+    
+    # Create right image: X-ray with BLUE prediction overlay
+    right_img = img_rgb.copy()
+    right_img[pred_bin == 1] = [255, 0, 0]  # BGR: Blue
+    right_img = cv2.addWeighted(img_rgb, 0.6, right_img, 0.4, 0)
     
     # Create side-by-side image
-    combined = np.zeros((h, w * 3), dtype=np.uint8)
-    combined[:, 0:w] = img
-    combined[:, w:2*w] = gt_vis
-    combined[:, 2*w:3*w] = pred_vis
+    combined = np.zeros((h, w * 2, 3), dtype=np.uint8)
+    combined[:, 0:w] = left_img
+    combined[:, w:2*w] = right_img
     
     # Add text labels
     font = cv2.FONT_HERSHEY_SIMPLEX
-    font_scale = 2.0
+    font_scale = 1.5
     thickness = 3
-    color = 255  # White text
+    color = (255, 255, 255)  # White text
     
     # Title at the top
-    title = f"ID: {img_id}, Dice: {dice_score:.4f}"
-    cv2.putText(combined, title, (10, 50), font, font_scale, color, thickness)
+    title = f"ID: {img_id} | Dice: {dice_score:.4f}"
+    cv2.putText(combined, title, (20, 60), font, font_scale, color, thickness)
     
-    # Column labels
-    cv2.putText(combined, "Original", (10, h-20), font, font_scale*0.7, color, thickness-1)
-    cv2.putText(combined, "Ground Truth", (w+10, h-20), font, font_scale*0.7, color, thickness-1)
-    cv2.putText(combined, "Prediction", (2*w+10, h-20), font, font_scale*0.7, color, thickness-1)
+    # Column labels at bottom
+    cv2.putText(combined, "Ground Truth (Green)", (20, h-30), font, font_scale*0.8, (0, 255, 0), thickness)
+    cv2.putText(combined, "Prediction (Blue)", (w+20, h-30), font, font_scale*0.8, (255, 0, 0), thickness)
     
     # Save
     cv2.imwrite(output_path, combined)
     print(f"Saved: {output_path}")
     return combined
+
+def calculate_dice_excluding_empty(pred, gt):
+    """
+    Calculate Dice coefficient. 
+    Returns None for images with no disease in GT (to exclude from results).
+    """
+    pred_bin = (pred > 0).astype(np.uint8)
+    gt_bin = (gt > 0).astype(np.uint8)
+    
+    # Check if GT has any disease
+    if np.sum(gt_bin) == 0:
+        return None  # Skip images with no disease
+    
+    intersection = np.sum(pred_bin * gt_bin)
+    union = np.sum(pred_bin) + np.sum(gt_bin)
+    
+    if union == 0:
+        return 0.0
+    
+    return (2.0 * intersection) / union
 
 def load_model(cfg_file, checkpoint):
     """Load trained model."""
@@ -165,6 +194,7 @@ def main():
     # Calculate metrics for all images
     print(f"\nCalculating Dice scores for {len(test_data)} images...")
     results = []
+    skipped = 0
     
     for item in tqdm(test_data):
         img_id = item['id']
@@ -181,8 +211,12 @@ def main():
         if pred_mask.shape != gt.shape:
             pred_mask = cv2.resize(pred_mask, (gt.shape[1], gt.shape[0]), interpolation=cv2.INTER_NEAREST)
         
-        # Calculate Dice
-        dice = calculate_dice(pred_mask, gt)
+        # Calculate Dice (excluding images with no disease)
+        dice = calculate_dice_excluding_empty(pred_mask, gt)
+        
+        if dice is None:
+            skipped += 1
+            continue  # Skip images with no disease in GT
         
         results.append({
             'id': img_id,
@@ -201,10 +235,12 @@ def main():
     # Print summary
     dice_scores = [r['dice'] for r in results]
     print("\n" + "="*70)
-    print("DICE SCORE SUMMARY")
+    print("DICE SCORE SUMMARY (Images with Disease Only)")
     print("="*70)
-    print(f"Total images: {len(results)}")
-    print(f"Mean Dice: {np.mean(dice_scores):.4f} ({np.mean(dice_scores)*100:.2f}%)")
+    print(f"Total test images: {len(test_data)}")
+    print(f"Images with disease: {len(results)}")
+    print(f"Images without disease (skipped): {skipped}")
+    print(f"\nMean Dice: {np.mean(dice_scores):.4f} ({np.mean(dice_scores)*100:.2f}%)")
     print(f"Std Dice:  {np.std(dice_scores):.4f}")
     print(f"Min Dice:  {min(dice_scores):.4f}")
     print(f"Max Dice:  {max(dice_scores):.4f}")
