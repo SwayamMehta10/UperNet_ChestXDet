@@ -3,7 +3,7 @@
 import torch.cuda as cuda
 import torch.nn as nn
 import torch
-import collections
+from collections.abc import Sequence, Mapping
 from torch.nn.parallel._functions import Gather
 
 
@@ -16,9 +16,9 @@ def async_copy_to(obj, dev, main_stream=None):
         if main_stream is not None:
             v.data.record_stream(main_stream)
         return v
-    elif isinstance(obj, collections.Mapping):
+    elif isinstance(obj, Mapping):
         return {k: async_copy_to(o, dev, main_stream) for k, o in obj.items()}
-    elif isinstance(obj, collections.Sequence):
+    elif isinstance(obj, Sequence):
         return [async_copy_to(o, dev, main_stream) for o in obj]
     else:
         return obj
@@ -38,9 +38,9 @@ def dict_gather(outputs, target_device, dim=0):
             return Gather.apply(target_device, dim, *outputs)
         elif out is None:
             return None
-        elif isinstance(out, collections.Mapping):
+        elif isinstance(out, Mapping):
             return {k: gather_map([o[k] for o in outputs]) for k in out}
-        elif isinstance(out, collections.Sequence):
+        elif isinstance(out, Sequence):
             return type(out)(map(gather_map, zip(*outputs)))
     return gather_map(outputs)
 
