@@ -63,7 +63,7 @@ def main():
     ap = argparse.ArgumentParser(
         description="Convert ChestX-Det to binary segmentation ODGT format"
     )
-    ap.add_argument("--root", default=osp.abspath(osp.join("..", "..")))
+    ap.add_argument("--root", default=osp.abspath(".."))
     ap.add_argument("--chestx", default="chestxdet")
     ap.add_argument("--out", default="data/chestxdet_binary")
     args = ap.parse_args()
@@ -72,8 +72,8 @@ def main():
     chest = osp.join(proj, args.chestx)
     img_train = osp.join(chest, "train")
     img_test  = osp.join(chest, "test")
-    ann_train = json.load(open(osp.join(chest, "/scratch/smehta90/upernet_chestxdet/chestxdet/ChestX_Det_train.json")))
-    ann_test  = json.load(open(osp.join(chest, "/scratch/smehta90/upernet_chestxdet/chestxdet/ChestX_Det_test.json")))
+    ann_train = json.load(open(osp.join(chest, "ChestX_Det_train.json")))
+    ann_test  = json.load(open(osp.join(chest, "ChestX_Det_test.json")))
 
     print(f"Train samples: {len(ann_train)}")
     print(f"Test samples: {len(ann_test)}")
