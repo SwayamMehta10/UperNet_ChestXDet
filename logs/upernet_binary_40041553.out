@@ -1,0 +1,749 @@
+Job ID: 40041553
+Node: sg029
+Start time: Fri Nov 21 04:22:34 MST 2025
+Working directory: /scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch
+================================================
+Resuming from epoch 2
+================================================
+================================================
+Starting training (Epoch 2 onwards)...
+================================================
+Config: config/chestxdet-resnet50-upernet-binary-v2.yaml
+GPUs: 1 x A100
+Batch size per GPU: 2
+Workers: 16
+Target epochs: 30
+================================================
+[2025-11-21 04:22:43,462 INFO train.py line 353 1672843] Loaded configuration file config/chestxdet-resnet50-upernet-binary-v2.yaml
+[2025-11-21 04:22:43,463 INFO train.py line 354 1672843] Running with config:
+DATASET:
+  imgMaxSize: 1536
+  imgSizes: (512, 768, 1024)
+  list_train: data/chestxdet_binary/lists/train_split.odgt
+  list_val: data/chestxdet_binary/lists/val_split.odgt
+  num_class: 2
+  padding_constant: 32
+  random_flip: True
+  root_dataset: .
+  segm_downsampling_rate: 4
+DIR: ckpt/chestxdet-resnet50-upernet-binary-v2
+MODEL:
+  arch_decoder: upernet
+  arch_encoder: resnet50
+  fc_dim: 2048
+  weights_decoder: 
+  weights_encoder: pretrained/resnet50-imagenet.pth
+TEST:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  result: ./
+TRAIN:
+  batch_size_per_gpu: 4
+  beta1: 0.9
+  deep_sup_scale: 0.4
+  disp_iter: 50
+  epoch_iters: 484
+  fix_bn: False
+  lr_decoder: 0.001
+  lr_encoder: 0.0001
+  lr_pow: 0.9
+  num_epoch: 30
+  optim: SGD
+  seed: 42
+  start_epoch: 2
+  weight_decay: 0.0001
+  workers: 16
+VAL:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  visualize: False
+[2025-11-21 04:22:43,464 INFO train.py line 359 1672843] Outputing checkpoints to: ckpt/chestxdet-resnet50-upernet-binary-v2
+Loading weights for net_encoder
+Loading weights for net_decoder
+# samples: 2420
+1 Epoch = 484 iters
+Epoch: [3][0/484], Time: 1.61, Data: 0.22, lr_encoder: 0.000094, lr_decoder: 0.000940, Accuracy: 94.95, Loss: 0.149530
+Epoch: [3][50/484], Time: 0.25, Data: 0.20, lr_encoder: 0.000094, lr_decoder: 0.000937, Accuracy: 92.39, Loss: 0.196196
+Epoch: [3][100/484], Time: 0.26, Data: 0.22, lr_encoder: 0.000093, lr_decoder: 0.000934, Accuracy: 92.57, Loss: 0.191040
+Epoch: [3][150/484], Time: 0.25, Data: 0.22, lr_encoder: 0.000093, lr_decoder: 0.000930, Accuracy: 92.80, Loss: 0.184813
+Epoch: [3][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000093, lr_decoder: 0.000927, Accuracy: 92.81, Loss: 0.183257
+Epoch: [3][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000092, lr_decoder: 0.000924, Accuracy: 92.98, Loss: 0.178972
+Epoch: [3][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000092, lr_decoder: 0.000921, Accuracy: 93.15, Loss: 0.176305
+Epoch: [3][350/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000092, lr_decoder: 0.000918, Accuracy: 93.28, Loss: 0.173502
+Epoch: [3][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000091, lr_decoder: 0.000915, Accuracy: 93.28, Loss: 0.173265
+Epoch: [3][450/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000091, lr_decoder: 0.000912, Accuracy: 93.31, Loss: 0.172750
+Saving checkpoints...
+
+Running validation after epoch 3 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 3 (dataset-level) Dice=0.0935, IoU=0.0491
+
+Epoch: [4][0/484], Time: 0.13, Data: 0.10, lr_encoder: 0.000091, lr_decoder: 0.000910, Accuracy: 95.76, Loss: 0.115115
+Epoch: [4][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000091, lr_decoder: 0.000906, Accuracy: 93.53, Loss: 0.162064
+Epoch: [4][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000090, lr_decoder: 0.000903, Accuracy: 93.70, Loss: 0.158003
+Epoch: [4][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000090, lr_decoder: 0.000900, Accuracy: 93.91, Loss: 0.152776
+Epoch: [4][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000090, lr_decoder: 0.000897, Accuracy: 93.91, Loss: 0.151900
+Epoch: [4][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000089, lr_decoder: 0.000894, Accuracy: 94.03, Loss: 0.148868
+Epoch: [4][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000089, lr_decoder: 0.000891, Accuracy: 94.14, Loss: 0.147253
+Epoch: [4][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000089, lr_decoder: 0.000888, Accuracy: 94.24, Loss: 0.145474
+Epoch: [4][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000088, lr_decoder: 0.000884, Accuracy: 94.23, Loss: 0.145461
+Epoch: [4][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000088, lr_decoder: 0.000881, Accuracy: 94.25, Loss: 0.145440
+Saving checkpoints...
+
+Running validation after epoch 4 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 4 (dataset-level) Dice=0.0979, IoU=0.0514
+
+Epoch: [5][0/484], Time: 0.11, Data: 0.08, lr_encoder: 0.000088, lr_decoder: 0.000879, Accuracy: 96.16, Loss: 0.099101
+Epoch: [5][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000088, lr_decoder: 0.000876, Accuracy: 94.27, Loss: 0.142516
+Epoch: [5][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000087, lr_decoder: 0.000873, Accuracy: 94.41, Loss: 0.139322
+Epoch: [5][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000087, lr_decoder: 0.000870, Accuracy: 94.63, Loss: 0.134375
+Epoch: [5][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000087, lr_decoder: 0.000867, Accuracy: 94.65, Loss: 0.133336
+Epoch: [5][250/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000086, lr_decoder: 0.000863, Accuracy: 94.75, Loss: 0.130605
+Epoch: [5][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000086, lr_decoder: 0.000860, Accuracy: 94.84, Loss: 0.129046
+Epoch: [5][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000086, lr_decoder: 0.000857, Accuracy: 94.94, Loss: 0.127544
+Epoch: [5][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000085, lr_decoder: 0.000854, Accuracy: 94.95, Loss: 0.127160
+Epoch: [5][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000085, lr_decoder: 0.000851, Accuracy: 94.97, Loss: 0.126965
+Saving checkpoints...
+
+Running validation after epoch 5 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 5 (dataset-level) Dice=0.1146, IoU=0.0608
+
+Epoch: [6][0/484], Time: 0.17, Data: 0.14, lr_encoder: 0.000085, lr_decoder: 0.000849, Accuracy: 96.39, Loss: 0.088280
+Epoch: [6][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000085, lr_decoder: 0.000846, Accuracy: 94.97, Loss: 0.126306
+Epoch: [6][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000084, lr_decoder: 0.000842, Accuracy: 95.08, Loss: 0.123762
+Epoch: [6][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000084, lr_decoder: 0.000839, Accuracy: 95.27, Loss: 0.119243
+Epoch: [6][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000084, lr_decoder: 0.000836, Accuracy: 95.31, Loss: 0.118092
+Epoch: [6][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000083, lr_decoder: 0.000833, Accuracy: 95.41, Loss: 0.115516
+Epoch: [6][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000083, lr_decoder: 0.000830, Accuracy: 95.48, Loss: 0.113958
+Epoch: [6][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000083, lr_decoder: 0.000827, Accuracy: 95.57, Loss: 0.112640
+Epoch: [6][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000082, lr_decoder: 0.000823, Accuracy: 95.59, Loss: 0.111954
+Epoch: [6][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000082, lr_decoder: 0.000820, Accuracy: 95.62, Loss: 0.111507
+Saving checkpoints...
+
+Running validation after epoch 6 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 6 (dataset-level) Dice=0.1469, IoU=0.0793
+
+Epoch: [7][0/484], Time: 0.16, Data: 0.13, lr_encoder: 0.000082, lr_decoder: 0.000818, Accuracy: 96.64, Loss: 0.079747
+Epoch: [7][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000081, lr_decoder: 0.000815, Accuracy: 95.61, Loss: 0.112052
+Epoch: [7][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000081, lr_decoder: 0.000812, Accuracy: 95.68, Loss: 0.110038
+Epoch: [7][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000081, lr_decoder: 0.000809, Accuracy: 95.85, Loss: 0.106133
+Epoch: [7][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000081, lr_decoder: 0.000805, Accuracy: 95.89, Loss: 0.105009
+Epoch: [7][250/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000080, lr_decoder: 0.000802, Accuracy: 95.98, Loss: 0.102601
+Epoch: [7][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000080, lr_decoder: 0.000799, Accuracy: 96.05, Loss: 0.101072
+Epoch: [7][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000080, lr_decoder: 0.000796, Accuracy: 96.12, Loss: 0.099935
+Epoch: [7][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000079, lr_decoder: 0.000793, Accuracy: 96.15, Loss: 0.099169
+Epoch: [7][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000079, lr_decoder: 0.000789, Accuracy: 96.18, Loss: 0.098585
+Saving checkpoints...
+
+Running validation after epoch 7 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 7 (dataset-level) Dice=0.1850, IoU=0.1019
+
+Epoch: [8][0/484], Time: 0.32, Data: 0.27, lr_encoder: 0.000079, lr_decoder: 0.000787, Accuracy: 97.06, Loss: 0.071522
+Epoch: [8][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000078, lr_decoder: 0.000784, Accuracy: 96.16, Loss: 0.099547
+Epoch: [8][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000078, lr_decoder: 0.000781, Accuracy: 96.21, Loss: 0.098163
+Epoch: [8][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000078, lr_decoder: 0.000778, Accuracy: 96.34, Loss: 0.094927
+Epoch: [8][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000077, lr_decoder: 0.000775, Accuracy: 96.38, Loss: 0.093897
+Epoch: [8][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000077, lr_decoder: 0.000771, Accuracy: 96.47, Loss: 0.091701
+Epoch: [8][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000077, lr_decoder: 0.000768, Accuracy: 96.53, Loss: 0.090248
+Epoch: [8][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000076, lr_decoder: 0.000765, Accuracy: 96.58, Loss: 0.089293
+Epoch: [8][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000076, lr_decoder: 0.000762, Accuracy: 96.61, Loss: 0.088553
+Epoch: [8][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000076, lr_decoder: 0.000759, Accuracy: 96.64, Loss: 0.087937
+Saving checkpoints...
+
+Running validation after epoch 8 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 8 (dataset-level) Dice=0.2268, IoU=0.1279
+
+Epoch: [9][0/484], Time: 0.24, Data: 0.20, lr_encoder: 0.000076, lr_decoder: 0.000756, Accuracy: 97.54, Loss: 0.062824
+Epoch: [9][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000075, lr_decoder: 0.000753, Accuracy: 96.62, Loss: 0.088975
+Epoch: [9][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000075, lr_decoder: 0.000750, Accuracy: 96.64, Loss: 0.088136
+Epoch: [9][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000075, lr_decoder: 0.000747, Accuracy: 96.75, Loss: 0.085450
+Epoch: [9][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000074, lr_decoder: 0.000744, Accuracy: 96.78, Loss: 0.084528
+Epoch: [9][250/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000074, lr_decoder: 0.000740, Accuracy: 96.86, Loss: 0.082560
+Epoch: [9][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000074, lr_decoder: 0.000737, Accuracy: 96.92, Loss: 0.081218
+Epoch: [9][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000073, lr_decoder: 0.000734, Accuracy: 96.96, Loss: 0.080443
+Epoch: [9][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000073, lr_decoder: 0.000731, Accuracy: 96.99, Loss: 0.079759
+Epoch: [9][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000073, lr_decoder: 0.000728, Accuracy: 97.01, Loss: 0.079147
+Saving checkpoints...
+
+Running validation after epoch 9 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 9 (dataset-level) Dice=0.2668, IoU=0.1539
+
+Epoch: [10][0/484], Time: 0.20, Data: 0.15, lr_encoder: 0.000073, lr_decoder: 0.000725, Accuracy: 97.86, Loss: 0.055590
+Epoch: [10][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000072, lr_decoder: 0.000722, Accuracy: 96.99, Loss: 0.080027
+Epoch: [10][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000072, lr_decoder: 0.000719, Accuracy: 96.99, Loss: 0.079665
+Epoch: [10][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000072, lr_decoder: 0.000716, Accuracy: 97.09, Loss: 0.077438
+Epoch: [10][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000071, lr_decoder: 0.000713, Accuracy: 97.11, Loss: 0.076639
+Epoch: [10][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000071, lr_decoder: 0.000709, Accuracy: 97.18, Loss: 0.074883
+Epoch: [10][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000071, lr_decoder: 0.000706, Accuracy: 97.24, Loss: 0.073665
+Epoch: [10][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000070, lr_decoder: 0.000703, Accuracy: 97.27, Loss: 0.073047
+Epoch: [10][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000070, lr_decoder: 0.000700, Accuracy: 97.29, Loss: 0.072432
+Epoch: [10][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000070, lr_decoder: 0.000696, Accuracy: 97.31, Loss: 0.071832
+Saving checkpoints...
+
+Running validation after epoch 10 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 10 (dataset-level) Dice=0.3051, IoU=0.1800
+
+Epoch: [11][0/484], Time: 0.15, Data: 0.11, lr_encoder: 0.000069, lr_decoder: 0.000694, Accuracy: 98.16, Loss: 0.049781
+Epoch: [11][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000069, lr_decoder: 0.000691, Accuracy: 97.30, Loss: 0.072558
+Epoch: [11][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000069, lr_decoder: 0.000688, Accuracy: 97.29, Loss: 0.072546
+Epoch: [11][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000068, lr_decoder: 0.000685, Accuracy: 97.36, Loss: 0.070704
+Epoch: [11][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000068, lr_decoder: 0.000681, Accuracy: 97.39, Loss: 0.070028
+Epoch: [11][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000068, lr_decoder: 0.000678, Accuracy: 97.45, Loss: 0.068449
+Epoch: [11][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000067, lr_decoder: 0.000675, Accuracy: 97.49, Loss: 0.067334
+Epoch: [11][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000067, lr_decoder: 0.000672, Accuracy: 97.52, Loss: 0.066844
+Epoch: [11][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000067, lr_decoder: 0.000668, Accuracy: 97.54, Loss: 0.066290
+Epoch: [11][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000067, lr_decoder: 0.000665, Accuracy: 97.56, Loss: 0.065704
+Saving checkpoints...
+
+Running validation after epoch 11 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 11 (dataset-level) Dice=0.3425, IoU=0.2066
+
+Epoch: [12][0/484], Time: 0.07, Data: 0.03, lr_encoder: 0.000066, lr_decoder: 0.000663, Accuracy: 98.37, Loss: 0.045028
+Epoch: [12][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000066, lr_decoder: 0.000660, Accuracy: 97.55, Loss: 0.066370
+Epoch: [12][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000066, lr_decoder: 0.000656, Accuracy: 97.53, Loss: 0.066577
+Epoch: [12][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000065, lr_decoder: 0.000653, Accuracy: 97.59, Loss: 0.065019
+Epoch: [12][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000065, lr_decoder: 0.000650, Accuracy: 97.61, Loss: 0.064451
+Epoch: [12][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000065, lr_decoder: 0.000647, Accuracy: 97.66, Loss: 0.063018
+Epoch: [12][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000064, lr_decoder: 0.000643, Accuracy: 97.71, Loss: 0.061994
+Epoch: [12][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000064, lr_decoder: 0.000640, Accuracy: 97.73, Loss: 0.061601
+Epoch: [12][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000064, lr_decoder: 0.000637, Accuracy: 97.74, Loss: 0.061101
+Epoch: [12][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000063, lr_decoder: 0.000634, Accuracy: 97.76, Loss: 0.060532
+Saving checkpoints...
+
+Running validation after epoch 12 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 12 (dataset-level) Dice=0.3757, IoU=0.2313
+
+Epoch: [13][0/484], Time: 0.38, Data: 0.35, lr_encoder: 0.000063, lr_decoder: 0.000631, Accuracy: 98.52, Loss: 0.041449
+Epoch: [13][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000063, lr_decoder: 0.000628, Accuracy: 97.75, Loss: 0.061228
+Epoch: [13][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000062, lr_decoder: 0.000625, Accuracy: 97.73, Loss: 0.061588
+Epoch: [13][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000062, lr_decoder: 0.000622, Accuracy: 97.78, Loss: 0.060240
+Epoch: [13][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000062, lr_decoder: 0.000618, Accuracy: 97.80, Loss: 0.059753
+Epoch: [13][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000062, lr_decoder: 0.000615, Accuracy: 97.84, Loss: 0.058442
+Epoch: [13][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000061, lr_decoder: 0.000612, Accuracy: 97.89, Loss: 0.057484
+Epoch: [13][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000061, lr_decoder: 0.000609, Accuracy: 97.90, Loss: 0.057168
+Epoch: [13][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000061, lr_decoder: 0.000605, Accuracy: 97.91, Loss: 0.056716
+Epoch: [13][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000060, lr_decoder: 0.000602, Accuracy: 97.93, Loss: 0.056163
+Saving checkpoints...
+
+Running validation after epoch 13 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 13 (dataset-level) Dice=0.4022, IoU=0.2517
+
+Epoch: [14][0/484], Time: 0.21, Data: 0.16, lr_encoder: 0.000060, lr_decoder: 0.000600, Accuracy: 98.63, Loss: 0.038716
+Epoch: [14][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000060, lr_decoder: 0.000597, Accuracy: 97.92, Loss: 0.056929
+Epoch: [14][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000059, lr_decoder: 0.000593, Accuracy: 97.89, Loss: 0.057373
+Epoch: [14][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000059, lr_decoder: 0.000590, Accuracy: 97.94, Loss: 0.056191
+Epoch: [14][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000059, lr_decoder: 0.000587, Accuracy: 97.95, Loss: 0.055762
+Epoch: [14][250/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000058, lr_decoder: 0.000583, Accuracy: 98.00, Loss: 0.054557
+Epoch: [14][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000058, lr_decoder: 0.000580, Accuracy: 98.03, Loss: 0.053656
+Epoch: [14][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000058, lr_decoder: 0.000577, Accuracy: 98.05, Loss: 0.053396
+Epoch: [14][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000057, lr_decoder: 0.000573, Accuracy: 98.06, Loss: 0.052985
+Epoch: [14][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000057, lr_decoder: 0.000570, Accuracy: 98.08, Loss: 0.052447
+Saving checkpoints...
+
+Running validation after epoch 14 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 14 (dataset-level) Dice=0.4186, IoU=0.2647
+
+Epoch: [15][0/484], Time: 0.18, Data: 0.14, lr_encoder: 0.000057, lr_decoder: 0.000568, Accuracy: 98.71, Loss: 0.036700
+Epoch: [15][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000056, lr_decoder: 0.000565, Accuracy: 98.06, Loss: 0.053329
+Epoch: [15][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000056, lr_decoder: 0.000561, Accuracy: 98.03, Loss: 0.053820
+Epoch: [15][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000056, lr_decoder: 0.000558, Accuracy: 98.07, Loss: 0.052761
+Epoch: [15][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000055, lr_decoder: 0.000555, Accuracy: 98.08, Loss: 0.052374
+Epoch: [15][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000055, lr_decoder: 0.000551, Accuracy: 98.12, Loss: 0.051255
+Epoch: [15][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000055, lr_decoder: 0.000548, Accuracy: 98.16, Loss: 0.050394
+Epoch: [15][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000054, lr_decoder: 0.000545, Accuracy: 98.17, Loss: 0.050172
+Epoch: [15][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000054, lr_decoder: 0.000541, Accuracy: 98.18, Loss: 0.049798
+Epoch: [15][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000054, lr_decoder: 0.000538, Accuracy: 98.20, Loss: 0.049278
+Saving checkpoints...
+
+Running validation after epoch 15 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 15 (dataset-level) Dice=0.4301, IoU=0.2740
+
+Epoch: [16][0/484], Time: 0.34, Data: 0.31, lr_encoder: 0.000054, lr_decoder: 0.000536, Accuracy: 98.77, Loss: 0.035134
+Epoch: [16][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000053, lr_decoder: 0.000533, Accuracy: 98.17, Loss: 0.050292
+Epoch: [16][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000053, lr_decoder: 0.000529, Accuracy: 98.15, Loss: 0.050797
+Epoch: [16][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000053, lr_decoder: 0.000526, Accuracy: 98.18, Loss: 0.049826
+Epoch: [16][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000052, lr_decoder: 0.000523, Accuracy: 98.19, Loss: 0.049469
+Epoch: [16][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000052, lr_decoder: 0.000519, Accuracy: 98.23, Loss: 0.048425
+Epoch: [16][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000052, lr_decoder: 0.000516, Accuracy: 98.26, Loss: 0.047600
+Epoch: [16][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000051, lr_decoder: 0.000513, Accuracy: 98.27, Loss: 0.047405
+Epoch: [16][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000051, lr_decoder: 0.000509, Accuracy: 98.28, Loss: 0.047067
+Epoch: [16][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000051, lr_decoder: 0.000506, Accuracy: 98.30, Loss: 0.046564
+Saving checkpoints...
+
+Running validation after epoch 16 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 16 (dataset-level) Dice=0.4370, IoU=0.2796
+
+Epoch: [17][0/484], Time: 0.11, Data: 0.08, lr_encoder: 0.000050, lr_decoder: 0.000504, Accuracy: 98.83, Loss: 0.033843
+Epoch: [17][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000050, lr_decoder: 0.000500, Accuracy: 98.27, Loss: 0.047718
+Epoch: [17][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000050, lr_decoder: 0.000497, Accuracy: 98.24, Loss: 0.048206
+Epoch: [17][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000049, lr_decoder: 0.000494, Accuracy: 98.28, Loss: 0.047309
+Epoch: [17][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000049, lr_decoder: 0.000490, Accuracy: 98.29, Loss: 0.046975
+Epoch: [17][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000049, lr_decoder: 0.000487, Accuracy: 98.32, Loss: 0.045996
+Epoch: [17][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000048, lr_decoder: 0.000484, Accuracy: 98.35, Loss: 0.045202
+Epoch: [17][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000048, lr_decoder: 0.000480, Accuracy: 98.36, Loss: 0.045025
+Epoch: [17][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000048, lr_decoder: 0.000477, Accuracy: 98.37, Loss: 0.044718
+Epoch: [17][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000047, lr_decoder: 0.000473, Accuracy: 98.38, Loss: 0.044231
+Saving checkpoints...
+
+Running validation after epoch 17 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 17 (dataset-level) Dice=0.4449, IoU=0.2861
+
+Epoch: [18][0/484], Time: 0.45, Data: 0.41, lr_encoder: 0.000047, lr_decoder: 0.000471, Accuracy: 98.86, Loss: 0.032744
+Epoch: [18][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000047, lr_decoder: 0.000468, Accuracy: 98.35, Loss: 0.045538
+Epoch: [18][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000046, lr_decoder: 0.000464, Accuracy: 98.33, Loss: 0.045990
+Epoch: [18][150/484], Time: 0.25, Data: 0.22, lr_encoder: 0.000046, lr_decoder: 0.000461, Accuracy: 98.36, Loss: 0.045146
+Epoch: [18][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000046, lr_decoder: 0.000458, Accuracy: 98.36, Loss: 0.044833
+Epoch: [18][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000045, lr_decoder: 0.000454, Accuracy: 98.40, Loss: 0.043908
+Epoch: [18][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000045, lr_decoder: 0.000451, Accuracy: 98.43, Loss: 0.043140
+Epoch: [18][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000045, lr_decoder: 0.000447, Accuracy: 98.43, Loss: 0.042975
+Epoch: [18][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000044, lr_decoder: 0.000444, Accuracy: 98.44, Loss: 0.042698
+Epoch: [18][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000044, lr_decoder: 0.000441, Accuracy: 98.46, Loss: 0.042226
+Saving checkpoints...
+
+Running validation after epoch 18 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 18 (dataset-level) Dice=0.4533, IoU=0.2931
+
+Epoch: [19][0/484], Time: 0.22, Data: 0.19, lr_encoder: 0.000044, lr_decoder: 0.000438, Accuracy: 98.90, Loss: 0.031696
+Epoch: [19][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000043, lr_decoder: 0.000435, Accuracy: 98.41, Loss: 0.043685
+Epoch: [19][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000043, lr_decoder: 0.000432, Accuracy: 98.39, Loss: 0.044091
+Epoch: [19][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000043, lr_decoder: 0.000428, Accuracy: 98.43, Loss: 0.043286
+Epoch: [19][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000042, lr_decoder: 0.000425, Accuracy: 98.43, Loss: 0.042992
+Epoch: [19][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000042, lr_decoder: 0.000421, Accuracy: 98.46, Loss: 0.042113
+Epoch: [19][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000042, lr_decoder: 0.000418, Accuracy: 98.49, Loss: 0.041365
+Epoch: [19][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000041, lr_decoder: 0.000415, Accuracy: 98.50, Loss: 0.041209
+Epoch: [19][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000041, lr_decoder: 0.000411, Accuracy: 98.51, Loss: 0.040956
+Epoch: [19][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000041, lr_decoder: 0.000408, Accuracy: 98.52, Loss: 0.040498
+Saving checkpoints...
+
+Running validation after epoch 19 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 19 (dataset-level) Dice=0.4626, IoU=0.3009
+
+Epoch: [20][0/484], Time: 0.37, Data: 0.33, lr_encoder: 0.000041, lr_decoder: 0.000405, Accuracy: 98.94, Loss: 0.030689
+Epoch: [20][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000040, lr_decoder: 0.000402, Accuracy: 98.47, Loss: 0.042084
+Epoch: [20][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000040, lr_decoder: 0.000399, Accuracy: 98.45, Loss: 0.042460
+Epoch: [20][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000040, lr_decoder: 0.000395, Accuracy: 98.48, Loss: 0.041687
+Epoch: [20][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000039, lr_decoder: 0.000392, Accuracy: 98.49, Loss: 0.041411
+Epoch: [20][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000039, lr_decoder: 0.000388, Accuracy: 98.52, Loss: 0.040575
+Epoch: [20][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000038, lr_decoder: 0.000385, Accuracy: 98.55, Loss: 0.039841
+Epoch: [20][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000038, lr_decoder: 0.000381, Accuracy: 98.55, Loss: 0.039693
+Epoch: [20][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000038, lr_decoder: 0.000378, Accuracy: 98.56, Loss: 0.039460
+Epoch: [20][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000037, lr_decoder: 0.000374, Accuracy: 98.58, Loss: 0.039016
+Saving checkpoints...
+
+Running validation after epoch 20 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 20 (dataset-level) Dice=0.4726, IoU=0.3095
+
+Epoch: [21][0/484], Time: 0.18, Data: 0.15, lr_encoder: 0.000037, lr_decoder: 0.000372, Accuracy: 98.98, Loss: 0.029796
+Epoch: [21][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000037, lr_decoder: 0.000369, Accuracy: 98.52, Loss: 0.040724
+Epoch: [21][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000037, lr_decoder: 0.000365, Accuracy: 98.51, Loss: 0.041065
+Epoch: [21][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000036, lr_decoder: 0.000362, Accuracy: 98.54, Loss: 0.040312
+Epoch: [21][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000036, lr_decoder: 0.000358, Accuracy: 98.54, Loss: 0.040061
+Epoch: [21][250/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000035, lr_decoder: 0.000355, Accuracy: 98.57, Loss: 0.039258
+Epoch: [21][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000035, lr_decoder: 0.000351, Accuracy: 98.60, Loss: 0.038536
+Epoch: [21][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000035, lr_decoder: 0.000348, Accuracy: 98.60, Loss: 0.038394
+Epoch: [21][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000034, lr_decoder: 0.000344, Accuracy: 98.61, Loss: 0.038174
+Epoch: [21][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000034, lr_decoder: 0.000341, Accuracy: 98.62, Loss: 0.037743
+Saving checkpoints...
+
+Running validation after epoch 21 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 21 (dataset-level) Dice=0.4806, IoU=0.3164
+
+Epoch: [22][0/484], Time: 0.29, Data: 0.25, lr_encoder: 0.000034, lr_decoder: 0.000338, Accuracy: 99.02, Loss: 0.028915
+Epoch: [22][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000033, lr_decoder: 0.000335, Accuracy: 98.56, Loss: 0.039548
+Epoch: [22][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000033, lr_decoder: 0.000331, Accuracy: 98.55, Loss: 0.039872
+Epoch: [22][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000033, lr_decoder: 0.000328, Accuracy: 98.58, Loss: 0.039135
+Epoch: [22][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000032, lr_decoder: 0.000324, Accuracy: 98.58, Loss: 0.038905
+Epoch: [22][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000032, lr_decoder: 0.000321, Accuracy: 98.61, Loss: 0.038131
+Epoch: [22][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000032, lr_decoder: 0.000317, Accuracy: 98.64, Loss: 0.037417
+Epoch: [22][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000031, lr_decoder: 0.000314, Accuracy: 98.64, Loss: 0.037280
+Epoch: [22][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000031, lr_decoder: 0.000310, Accuracy: 98.65, Loss: 0.037072
+Epoch: [22][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000031, lr_decoder: 0.000307, Accuracy: 98.66, Loss: 0.036654
+Saving checkpoints...
+
+Running validation after epoch 22 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 22 (dataset-level) Dice=0.4838, IoU=0.3190
+
+Epoch: [23][0/484], Time: 0.20, Data: 0.16, lr_encoder: 0.000030, lr_decoder: 0.000304, Accuracy: 99.04, Loss: 0.028131
+Epoch: [23][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000030, lr_decoder: 0.000301, Accuracy: 98.60, Loss: 0.038550
+Epoch: [23][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000030, lr_decoder: 0.000297, Accuracy: 98.58, Loss: 0.038868
+Epoch: [23][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000029, lr_decoder: 0.000294, Accuracy: 98.61, Loss: 0.038145
+Epoch: [23][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000029, lr_decoder: 0.000290, Accuracy: 98.62, Loss: 0.037933
+Epoch: [23][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000029, lr_decoder: 0.000287, Accuracy: 98.64, Loss: 0.037183
+Epoch: [23][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000028, lr_decoder: 0.000283, Accuracy: 98.67, Loss: 0.036475
+Epoch: [23][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000028, lr_decoder: 0.000279, Accuracy: 98.67, Loss: 0.036336
+Epoch: [23][400/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000028, lr_decoder: 0.000276, Accuracy: 98.68, Loss: 0.036137
+Epoch: [23][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000027, lr_decoder: 0.000272, Accuracy: 98.70, Loss: 0.035731
+Saving checkpoints...
+
+Running validation after epoch 23 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 23 (dataset-level) Dice=0.4896, IoU=0.3242
+
+Epoch: [24][0/484], Time: 0.19, Data: 0.14, lr_encoder: 0.000027, lr_decoder: 0.000270, Accuracy: 99.07, Loss: 0.027447
+Epoch: [24][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000027, lr_decoder: 0.000266, Accuracy: 98.63, Loss: 0.037695
+Epoch: [24][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000026, lr_decoder: 0.000263, Accuracy: 98.61, Loss: 0.037998
+Epoch: [24][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000026, lr_decoder: 0.000259, Accuracy: 98.64, Loss: 0.037301
+Epoch: [24][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000026, lr_decoder: 0.000256, Accuracy: 98.65, Loss: 0.037111
+Epoch: [24][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000025, lr_decoder: 0.000252, Accuracy: 98.67, Loss: 0.036380
+Epoch: [24][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000025, lr_decoder: 0.000248, Accuracy: 98.70, Loss: 0.035678
+Epoch: [24][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000024, lr_decoder: 0.000245, Accuracy: 98.70, Loss: 0.035538
+Epoch: [24][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000024, lr_decoder: 0.000241, Accuracy: 98.71, Loss: 0.035348
+Epoch: [24][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000024, lr_decoder: 0.000237, Accuracy: 98.72, Loss: 0.034953
+Saving checkpoints...
+
+Running validation after epoch 24 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 24 (dataset-level) Dice=0.4957, IoU=0.3295
+
+Epoch: [25][0/484], Time: 0.14, Data: 0.10, lr_encoder: 0.000023, lr_decoder: 0.000235, Accuracy: 99.09, Loss: 0.026808
+Epoch: [25][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000023, lr_decoder: 0.000231, Accuracy: 98.65, Loss: 0.036979
+Epoch: [25][100/484], Time: 0.25, Data: 0.22, lr_encoder: 0.000023, lr_decoder: 0.000228, Accuracy: 98.64, Loss: 0.037265
+Epoch: [25][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000022, lr_decoder: 0.000224, Accuracy: 98.67, Loss: 0.036599
+Epoch: [25][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000022, lr_decoder: 0.000220, Accuracy: 98.67, Loss: 0.036435
+Epoch: [25][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000022, lr_decoder: 0.000217, Accuracy: 98.69, Loss: 0.035714
+Epoch: [25][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000021, lr_decoder: 0.000213, Accuracy: 98.72, Loss: 0.035019
+Epoch: [25][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000021, lr_decoder: 0.000209, Accuracy: 98.73, Loss: 0.034877
+Epoch: [25][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000021, lr_decoder: 0.000206, Accuracy: 98.73, Loss: 0.034695
+Epoch: [25][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000020, lr_decoder: 0.000202, Accuracy: 98.75, Loss: 0.034312
+Saving checkpoints...
+
+Running validation after epoch 25 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 25 (dataset-level) Dice=0.5010, IoU=0.3342
+
+Epoch: [26][0/484], Time: 0.30, Data: 0.27, lr_encoder: 0.000020, lr_decoder: 0.000199, Accuracy: 99.11, Loss: 0.026288
+Epoch: [26][50/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000020, lr_decoder: 0.000196, Accuracy: 98.67, Loss: 0.036392
+Epoch: [26][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000019, lr_decoder: 0.000192, Accuracy: 98.66, Loss: 0.036633
+Epoch: [26][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000019, lr_decoder: 0.000188, Accuracy: 98.69, Loss: 0.036007
+Epoch: [26][200/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000018, lr_decoder: 0.000184, Accuracy: 98.69, Loss: 0.035880
+Epoch: [26][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000018, lr_decoder: 0.000181, Accuracy: 98.71, Loss: 0.035161
+Epoch: [26][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000018, lr_decoder: 0.000177, Accuracy: 98.74, Loss: 0.034472
+Epoch: [26][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000017, lr_decoder: 0.000173, Accuracy: 98.75, Loss: 0.034328
+Epoch: [26][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000017, lr_decoder: 0.000169, Accuracy: 98.75, Loss: 0.034156
+Epoch: [26][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000017, lr_decoder: 0.000166, Accuracy: 98.76, Loss: 0.033785
+Saving checkpoints...
+
+Running validation after epoch 26 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 26 (dataset-level) Dice=0.5064, IoU=0.3391
+
+Epoch: [27][0/484], Time: 0.10, Data: 0.06, lr_encoder: 0.000016, lr_decoder: 0.000163, Accuracy: 99.12, Loss: 0.025926
+Epoch: [27][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000016, lr_decoder: 0.000159, Accuracy: 98.68, Loss: 0.035954
+Epoch: [27][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000016, lr_decoder: 0.000155, Accuracy: 98.68, Loss: 0.036102
+Epoch: [27][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000015, lr_decoder: 0.000152, Accuracy: 98.71, Loss: 0.035519
+Epoch: [27][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000015, lr_decoder: 0.000148, Accuracy: 98.70, Loss: 0.035445
+Epoch: [27][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000014, lr_decoder: 0.000144, Accuracy: 98.73, Loss: 0.034721
+Epoch: [27][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000014, lr_decoder: 0.000140, Accuracy: 98.75, Loss: 0.034042
+Epoch: [27][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000014, lr_decoder: 0.000136, Accuracy: 98.76, Loss: 0.033898
+Epoch: [27][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000013, lr_decoder: 0.000132, Accuracy: 98.77, Loss: 0.033737
+Epoch: [27][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000013, lr_decoder: 0.000129, Accuracy: 98.78, Loss: 0.033378
+Saving checkpoints...
+
+Running validation after epoch 27 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 27 (dataset-level) Dice=0.5113, IoU=0.3435
+
+Epoch: [28][0/484], Time: 0.21, Data: 0.18, lr_encoder: 0.000013, lr_decoder: 0.000126, Accuracy: 99.12, Loss: 0.025694
+Epoch: [28][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000012, lr_decoder: 0.000122, Accuracy: 98.69, Loss: 0.035682
+Epoch: [28][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000012, lr_decoder: 0.000118, Accuracy: 98.69, Loss: 0.035707
+Epoch: [28][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000011, lr_decoder: 0.000114, Accuracy: 98.72, Loss: 0.035147
+Epoch: [28][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000011, lr_decoder: 0.000110, Accuracy: 98.71, Loss: 0.035134
+Epoch: [28][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000011, lr_decoder: 0.000106, Accuracy: 98.74, Loss: 0.034400
+Epoch: [28][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000010, lr_decoder: 0.000102, Accuracy: 98.76, Loss: 0.033734
+Epoch: [28][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000010, lr_decoder: 0.000098, Accuracy: 98.77, Loss: 0.033595
+Epoch: [28][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000009, lr_decoder: 0.000094, Accuracy: 98.77, Loss: 0.033444
+Epoch: [28][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000009, lr_decoder: 0.000090, Accuracy: 98.79, Loss: 0.033100
+Saving checkpoints...
+
+Running validation after epoch 28 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 28 (dataset-level) Dice=0.5156, IoU=0.3473
+
+Epoch: [29][0/484], Time: 0.12, Data: 0.09, lr_encoder: 0.000009, lr_decoder: 0.000087, Accuracy: 99.11, Loss: 0.025642
+Epoch: [29][50/484], Time: 0.22, Data: 0.20, lr_encoder: 0.000008, lr_decoder: 0.000083, Accuracy: 98.69, Loss: 0.035522
+Epoch: [29][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000008, lr_decoder: 0.000079, Accuracy: 98.70, Loss: 0.035467
+Epoch: [29][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000008, lr_decoder: 0.000075, Accuracy: 98.73, Loss: 0.034915
+Epoch: [29][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000007, lr_decoder: 0.000071, Accuracy: 98.72, Loss: 0.034943
+Epoch: [29][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000007, lr_decoder: 0.000067, Accuracy: 98.74, Loss: 0.034201
+Epoch: [29][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000006, lr_decoder: 0.000063, Accuracy: 98.77, Loss: 0.033547
+Epoch: [29][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000006, lr_decoder: 0.000058, Accuracy: 98.77, Loss: 0.033415
+Epoch: [29][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000005, lr_decoder: 0.000054, Accuracy: 98.78, Loss: 0.033280
+Epoch: [29][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000005, lr_decoder: 0.000050, Accuracy: 98.79, Loss: 0.032960
+Saving checkpoints...
+
+Running validation after epoch 29 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 29 (dataset-level) Dice=0.5170, IoU=0.3486
+
+Epoch: [30][0/484], Time: 0.15, Data: 0.12, lr_encoder: 0.000005, lr_decoder: 0.000047, Accuracy: 99.11, Loss: 0.025467
+Epoch: [30][50/484], Time: 0.23, Data: 0.20, lr_encoder: 0.000004, lr_decoder: 0.000042, Accuracy: 98.69, Loss: 0.035439
+Epoch: [30][100/484], Time: 0.25, Data: 0.23, lr_encoder: 0.000004, lr_decoder: 0.000038, Accuracy: 98.70, Loss: 0.035405
+Epoch: [30][150/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000003, lr_decoder: 0.000034, Accuracy: 98.72, Loss: 0.034863
+Epoch: [30][200/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000003, lr_decoder: 0.000029, Accuracy: 98.72, Loss: 0.034837
+Epoch: [30][250/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000002, lr_decoder: 0.000024, Accuracy: 98.74, Loss: 0.034093
+Epoch: [30][300/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000002, lr_decoder: 0.000020, Accuracy: 98.77, Loss: 0.033437
+Epoch: [30][350/484], Time: 0.24, Data: 0.22, lr_encoder: 0.000001, lr_decoder: 0.000015, Accuracy: 98.77, Loss: 0.033334
+Epoch: [30][400/484], Time: 0.24, Data: 0.21, lr_encoder: 0.000001, lr_decoder: 0.000010, Accuracy: 98.78, Loss: 0.033200
+Epoch: [30][450/484], Time: 0.23, Data: 0.21, lr_encoder: 0.000000, lr_decoder: 0.000004, Accuracy: 98.79, Loss: 0.032937
+Saving checkpoints...
+
+Running validation after epoch 30 ...
+# samples: 605
+Val [0/605]
+Val [100/605]
+Val [200/605]
+Val [300/605]
+Val [400/605]
+Val [500/605]
+Val [600/605]
+
+Epoch 30 (dataset-level) Dice=0.5077, IoU=0.3402
+
+Training Done!
+Saved final model to ckpt/chestxdet-resnet50-upernet-binary-v2/model_final.pth
+================================================
+Training completed with exit code: 0
+End time: Fri Nov 21 05:21:33 MST 2025
+================================================
+
+Latest metrics:
+26,0.506433,0.339076
+27,0.511341,0.343491
+28,0.515599,0.347345
+29,0.516973,0.348593
+30,0.507704,0.340217

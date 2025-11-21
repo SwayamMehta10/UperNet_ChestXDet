@@ -44,7 +44,7 @@ fi
 
 # Step 2: Determine start epoch from existing checkpoints
 CFG="config/chestxdet-resnet50-upernet-binary-v2.yaml"
-CKPT_DIR="ckpt/chestxdet-resnet50-upernet-binary"
+CKPT_DIR="ckpt/chestxdet-resnet50-upernet-binary-v2"
 
 START_EPOCH=0
 if [ -d "$CKPT_DIR" ]; then
