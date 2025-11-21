@@ -19,12 +19,12 @@ MODEL:
   weights_decoder: ""
 
 TRAIN:
-  batch_size_per_gpu: 2
+  batch_size_per_gpu: 4
   num_epoch: 30                
   start_epoch: 0
-  epoch_iters: 968             # NEW: 2420 images / 2 batch / 1.25
-  lr_encoder: 0.00005
-  lr_decoder: 0.0005
+  epoch_iters: 484             # 2420 images / 4 batch / 1.25
+  lr_encoder: 0.0001
+  lr_decoder: 0.001
   lr_pow: 0.9
   beta1: 0.9
   weight_decay: 1.0e-4
