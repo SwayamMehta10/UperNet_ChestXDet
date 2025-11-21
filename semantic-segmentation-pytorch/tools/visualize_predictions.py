@@ -200,6 +200,10 @@ def main():
         # Load GT
         gt = cv2.imread(gt_path, cv2.IMREAD_GRAYSCALE)
         
+        # Ensure prediction and GT have same size (resize if needed)
+        if pred_mask.shape != gt.shape:
+            pred_mask = cv2.resize(pred_mask, (gt.shape[1], gt.shape[0]), interpolation=cv2.INTER_NEAREST)
+        
         # Calculate Dice
         dice = calculate_dice(pred_mask, gt)
         
