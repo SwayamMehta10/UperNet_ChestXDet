@@ -8,13 +8,16 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=smehta90@asu.edu
 
 # ChestX-Det Binary Segmentation Training with UperNet
 # Time-optimized for 4-hour A100 windows with checkpoint resumption
 
 module purge
+module load cuda-12.6.1-gcc-12.1.0
 module load mamba/latest
-source activate upernet
+source activate upernet_env
 
 cd $SLURM_SUBMIT_DIR/semantic-segmentation-pytorch
 

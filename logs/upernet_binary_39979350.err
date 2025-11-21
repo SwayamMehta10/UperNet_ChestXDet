@@ -1,0 +1,29 @@
+
+=====================================================================
+This module is only for creating or activating Python environments:
+$ mamba create -n myenv -c conda-forge python=3 <package_name>
+$ source activate myenv
+
+Only run "pip install" after activating an environment.
+Running pip without activating an environment is known to cause issues.
+
+To list available environments:
+$ mamba info --envs
+
+Other uses are not tested. More info: https://links.asu.edu/solpy
+=====================================================================
+
+  
+Writing train.odgt:   0%|          | 0/3025 [00:00<?, ?it/s][ WARN:0@0.641] global loadsave.cpp:275 findDecoder imread_('/scratch/smehta90/chestxdet/train/36200.png'): can't open/read file: check file path/integrity
+Writing train.odgt:   0%|          | 0/3025 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/tools/chestxdet_to_odgt_binary.py", line 99, in <module>
+    main()
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/tools/chestxdet_to_odgt_binary.py", line 88, in main
+    build_odgt(ann_train, img_train, mtrain, osp.join(out_root, "lists", "train.odgt"))
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/tools/chestxdet_to_odgt_binary.py", line 54, in build_odgt
+    im, seg, (w, h) = save_binary_mask_from_item(it, img_root, mask_root)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/smehta90/upernet_chestxdet/semantic-segmentation-pytorch/tools/chestxdet_to_odgt_binary.py", line 33, in save_binary_mask_from_item
+    raise FileNotFoundError(img_path)
+FileNotFoundError: /scratch/smehta90/chestxdet/train/36200.png
