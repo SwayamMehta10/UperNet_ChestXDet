@@ -137,6 +137,9 @@ def predict(segmentation_module, img_path):
     img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     
+    # Store original size
+    orig_h, orig_w = img.shape[:2]
+    
     # Prepare input (simplified - using fixed size)
     img_resized = cv2.resize(img, (512, 512))
     img_tensor = torch.from_numpy(img_resized.transpose(2, 0, 1)).float()
@@ -150,9 +153,9 @@ def predict(segmentation_module, img_path):
     # Add batch dimension and move to GPU
     img_tensor = img_tensor.unsqueeze(0).cuda()
     
-    # Predict
+    # Predict at original resolution
     with torch.no_grad():
-        pred = segmentation_module({'img_data': img_tensor}, segSize=(img.shape[0], img.shape[1]))
+        pred = segmentation_module({'img_data': img_tensor}, segSize=(orig_h, orig_w))
     
     # Get prediction mask
     _, pred_mask = torch.max(pred, dim=1)
