@@ -1,0 +1,44 @@
+DIR: "ckpt/chestxdet-resnet50-upernet-binary-v2"
+
+DATASET:
+  root_dataset: "."
+  list_train: "data/chestxdet_binary/lists/train_split.odgt"  # NEW: proper 80% split
+  list_val:   "data/chestxdet_binary/lists/val_split.odgt"    # NEW: proper 20% split
+  imgSizes: [512, 768, 1024]
+  imgMaxSize: 1536
+  padding_constant: 32
+  segm_downsampling_rate: 4
+  random_flip: True
+  num_class: 2
+
+MODEL:
+  arch_encoder: "resnet50"
+  arch_decoder: "upernet"
+  fc_dim: 2048
+  weights_encoder: "pretrained/resnet50-imagenet.pth"
+  weights_decoder: ""
+
+TRAIN:
+  batch_size_per_gpu: 2
+  num_epoch: 30                
+  start_epoch: 0
+  epoch_iters: 968             # NEW: 2420 images / 2 batch / 1.25
+  lr_encoder: 0.00005
+  lr_decoder: 0.0005
+  lr_pow: 0.9
+  beta1: 0.9
+  weight_decay: 1.0e-4
+  deep_sup_scale: 0.4
+  fix_bn: False
+  workers: 16
+  disp_iter: 50
+  seed: 42                     # NEW: different seed
+
+VAL:
+  batch_size: 1
+  visualize: False
+  checkpoint: epoch_20.pth
+
+TEST:
+  batch_size: 1
+  checkpoint: epoch_20.pth
