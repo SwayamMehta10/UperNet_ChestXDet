@@ -159,14 +159,41 @@ def main(cfg, gpus):
 
     # summary
     iou = intersection_meter.sum / (union_meter.sum + 1e-10)
-    for i, _iou in enumerate(iou):
-        print('class [{}], IoU: {:.4f}'.format(i, _iou))
+    
+    # Calculate Dice from IoU: Dice = 2*IoU / (1 + IoU)
+    dice = (2 * iou) / (1 + iou + 1e-10)
+    
+    print('\n' + '='*70)
+    print('EVALUATION RESULTS - Binary Disease Segmentation')
+    print('='*70)
+    
+    # Show all classes for reference
+    print('\nPer-Class Metrics (for reference):')
+    for i, (_iou, _dice) in enumerate(zip(iou, dice)):
+        class_name = 'Background' if i == 0 else 'Disease'
+        print(f'  Class [{i}] {class_name:12s}: IoU={_iou:.4f}, Dice={_dice:.4f}')
+    
+    # Highlight disease class metrics (what actually matters)
+    print('\n' + '='*70)
+    print('DISEASE CLASS METRICS (Primary Results):')
+    print('='*70)
+    if len(iou) > 1:
+        disease_iou = iou[1]  # Disease class is index 1
+        disease_dice = dice[1]
+        print(f'  Disease IoU:  {disease_iou:.4f} ({disease_iou*100:.2f}%)')
+        print(f'  Disease Dice: {disease_dice:.4f} ({disease_dice*100:.2f}%)')
+    else:
+        print('  Warning: Only one class detected')
+    
+    print('\nOverall Metrics (for reference):')
+    print(f'  Mean IoU (both classes): {iou.mean():.4f}')
+    print(f'  Pixel Accuracy: {acc_meter.average()*100:.2f}%')
+    print('='*70)
+    
+    print('\nNote: Focus on Disease class metrics for medical segmentation.')
+    print('Background IoU is high due to class imbalance but not clinically relevant.')
+    print('\nEvaluation Done!')
 
-    print('[Eval Summary]:')
-    print('Mean IoU: {:.4f}, Accuracy: {:.2f}%'
-          .format(iou.mean(), acc_meter.average()*100))
-
-    print('Evaluation Done!')
 
 
 if __name__ == '__main__':
